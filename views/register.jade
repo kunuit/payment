@@ -1,0 +1,56 @@
+extends layout
+block content
+
+    .container
+        br
+        hr
+        .card.bg-light
+            article.card-body.mx-auto(style='max-width: 400px;')
+            h4.card-title.mt-3.text-center Create Account
+            p.text-center Get started with your free account
+            p
+                a.btn.btn-block.btn-twitter(href='')
+                    i.fab.fa-twitter
+                    |  &nbsp; Login via Twitter
+                a.btn.btn-block.btn-facebook(href='')
+                    i.fab.fa-facebook-f
+                    |  &nbsp; Login via facebook
+            p.divider-text
+                span.bg-light OR
+            form.item(action='/register' method='POST')
+                .form-group.input-group
+                    .input-group-prepend
+                        span.input-group-text
+                            i.fa.fa-user
+                    input.form-control(name='fullName' placeholder='full name' type='text')
+                .form-group.input-group
+                    .input-group-prepend
+                        span.input-group-text
+                            i.fa.fa-user
+                    input.form-control(name='username' placeholder='user name' type='text')
+                // form-group//
+                .form-group.input-group
+                    .input-group-prepend
+                        span.input-group-text
+                            i.fa.fa-envelope
+                    input.form-control(name='email' placeholder='Email address' type='email')
+               
+                // form-group end.//
+                .form-group.input-group
+                    .input-group-prepend
+                        span.input-group-text
+                        i.fa.fa-lock
+                    input.form-control(name='password' placeholder='Create password' type='password')
+                // form-group//
+                .form-group.input-group
+                    .input-group-prepend
+                        span.input-group-text
+                        i.fa.fa-lock
+                    input.form-control(placeholder='Repeat password' type='password')
+                // form-group//
+                .form-group
+                    button.btn.btn-primary.btn-block(type='submit')  Create Account  
+                // form-group//
+                p.text-center
+                    | Have an account? 
+                    a(href='./login') Log In

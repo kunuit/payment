@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!doctype html>
+    <html lang="en">
+
+    <head>
+        <title>Title</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+
+<body>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+
+</html>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header clearfix">
+            <ul class="nav nav-pills pull-right">
+                <li class="active" role="presentation"><a href="/order/create_payment_url">Tạo mới</a></li>
+            </ul>
+            <h3 class="text-muted">VNPAY DEMO</h3>
+        </div>
+        <footer class="footer">
+            <p>&copy; VNPAY 2020</p>
+        </footer>
+    </div>
+    <div class="container">
+        <form id="createOrder" action="" method="GET">
+            <div class="form-group"><label>Loại hàng hóa</label><select class="form-control" id="orderType"
+                    name="orderType">
+                    <option value="billpayment">Thanh toán hóa đơn</option>
+                    <option value="fashion">Thời trang</option>
+                </select></div>
+            <div class="form-group"><label>Số tiền</label><input type="number" class="form-control" id="amount" name="amount"
+                    placeholder="Số tiền" value="10000" /></div>
+            <div class="form-group"><label>Email</label><input class="form-control" id="email" name="email"
+                    placeholder="email" /></div>
+            <div class="form-group"><label>Nội dung thanh toán</label><textarea class="form-control"
+                    id="orderDescription" name="orderDescription" placeholder="Nội dung thanh toán"></textarea></div>
+            <div class="form-group"><label>Ngân hàng</label><select class="form-control" id="bankCode" name="bankCode">
+                    <option value="">Không chọn</option>
+                    <option value="VNPAYQR">Ngân hàng VNPAYQR</option>
+                    <option value="NCB" selected="selected">Ngân hàng NCB</option>
+                    <option value="SCB">Ngân hàng SCB</option>
+                    <option value="SACOMBANK">Ngân hàng SACOMBANK</option>
+                    <option value="EXIMBANK">Ngân hàng EXIMBANK</option>
+                    <option value="MSBANK">Ngân hàng MSBANK</option>
+                    <option value="NAMABANK">Ngân hàng NAMABANK</option>
+                    <option value="VISA">Ngân hàng VISA</option>
+                    <option value="VNMART">Ngân hàng VNMART</option>
+                    <option value="VIETINBANK">Ngân hàng VIETINBANK</option>
+                    <option value="VIETCOMBANK">Ngân hàng VIETCOMBANK</option>
+                    <option value="HDBANK">Ngân hàng HDBANK</option>
+                    <option value="DONGABANK">Ngân hàng Dong A</option>
+                    <option value="TPBANK">Ngân hàng Tp Bank</option>
+                    <option value="OJB">Ngân hàng OceanBank</option>
+                    <option value="BIDV">Ngân hàng BIDV</option>
+                    <option value="TECHCOMBANK">Ngân hàng Techcombank</option>
+                    <option value="VPBANK">Ngân hàng VPBank</option>
+                    <option value="AGRIBANK">Ngân hàng AGRIBANK</option>
+                    <option value="MBBANK">Ngân hàng MBBank</option>
+                    <option value="ACB">Ngân hàng ACB</option>
+                    <option value="OCB">Ngân hàng OCB</option>
+                    <option value="SHB">Ngân hàng SHB</option>
+                    <option value="IVB">Ngân hàng IVB</option>
+                </select></div>
+            <div class="form-group"><label>Ngôn ngữ</label><select class="form-control" id="language" name="language">
+                    <option value="vn">Tiếng Việt</option>
+                    <option value="en">English</option>
+                </select></div><button class="btn btn-primary checkout" id="btnPopup" type="submit">Thanh toán</button>
+        </form>
+        <div class="container showBill">
+            <!-- <iframe src="http://sandbox.vnpayment.vn/paymentv2/vpcpay.html?vnp_Amount=10000&vnp_BankCode=NCB&vnp_Command=pay&vnp_CreateDate=20200114110135&vnp_CurrCode=VND&vnp_IpAddr=::1&vnp_Locale=vn&vnp_OrderInfo=thanh%20toan&vnp_OrderType=billpayment&vnp_ReturnUrl=http://localhost:8080/htmlll/&vnp_TmnCode=LQZSZN6Z&vnp_TxnRef=414700&vnp_Version=2&vnp_SecureHash=37029b1a2c137063f9c9f9627ae40f7d05076e353f8eaaa9ad226427e33e45e4" frameborder="1" width="800px" height="810"></iframe> -->
+        </div>
+        <script>
+            function getHash(str, algo = "SHA-256") {
+                let strBuf = new TextEncoder('utf-8').encode(str);
+                return crypto.subtle.digest(algo, strBuf)
+                    .then(hash => {
+                        window.hash = hash;
+                        // here hash is an arrayBuffer,
+                        // so we'll connvert it to its hex version
+                        let result = '';
+                        const view = new DataView(hash);
+                        for (let i = 0; i < hash.byteLength; i += 4) {
+                            result += ('00000000' + view.getUint32(i).toString(16)).slice(-8);
+                        }
+                        return result;
+                    });
+            }
+            Object.defineProperty(Date.prototype, 'YYYYMMDDHHMMSS', {
+                value: function () {
+                    function pad2(n) {  // always returns a string
+                        return (n < 10 ? '0' : '') + n;
+                    }
+
+                    return this.getFullYear() +
+                        pad2(this.getMonth() + 1) +
+                        pad2(this.getDate()) +
+                        pad2(this.getHours()) +
+                        pad2(this.getMinutes()) +
+                        pad2(this.getSeconds());
+                }
+            });
+            $('.checkout').click(function (e) {
+                e.preventDefault();
+                $(window).scrollTop(810, 1000)
+                const vnp_OrderInfo = 'thanh toan';
+                const vnp_OrderType = 'billpayment';
+                const vnp_Amount = $('#amount').val();
+                const vnp_BankCode = 'NCB';
+                const vnp_Locale = 'vn';
+                axios.post('http://localhost:8888/app1/create_payment_url', {
+                            amount: vnp_Amount,
+                            orderType: vnp_OrderType,
+                            email: $('#email').val(),
+                            orderDescription: vnp_OrderInfo,
+                            bankCode: vnp_BankCode,
+                            language: vnp_Locale
+                        })
+                        .then(function(data) {
+                            console.log(data)
+                            $('.showBill').html(`<iframe src="${data.data.data}" frameborder="0" scrolling="no" id="myFrame" width="800px" height="810"></iframe>`)
+                            $('#createOrder').hide()
+                            $(window).scrollTop(100)
+                        })
+                        .catch(err => console.log(err))
+            })
+
+            
+        </script>
+    </div>
+</body>
+
+</html>
