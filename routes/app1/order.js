@@ -137,12 +137,13 @@ router.get('/vnpay_return', function (req, res, next) {
                 let email = doc.data().email
                 console.log(email)
                 let mailOption = {
-                    from: 'VIETHAS',
+                    from: 'Cường normie',
                     to: email,
                     subject: 'THANH TOÁN THÀNH CÔNG',
                     html: `Bạn đã thanh toán hoá đơn #${vnp_Params['vnp_TxnRef']} với số tiền ${vnp_Params['vnp_Amount']}`
                 }
                 mail.sendMail(mailOption, function (error, info) {
+                    console.log(mailOption)
                     if (error) {
                         console.log('Error !' + error)
                     } else {
