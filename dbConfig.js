@@ -1,16 +1,16 @@
 const admin = require('firebase-admin');
 
-var serviceAccount = require("./serviceAccountKey.json");
+var serviceAccount = require("./paymentTMDT.json");
 var serviceAccount1 = require("./serviceAccountKey1.json");
-const app2 = admin.initializeApp({
+const app1 = admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://onlinechat-bb67b.firebaseio.com"
+  databaseURL: "https://demopayment-719ab.firebaseio.com"
 }, 'app1');
 
 
-const app1 = admin.initializeApp({
+const app2 = admin.initializeApp({
   credential: admin.credential.cert(serviceAccount1),
-  databaseURL: "https://demopayment-719ab.firebaseio.com"
+  databaseURL: "https://onlinechat-bb67b.firebaseio.com"
 }, 'app2');
 
 

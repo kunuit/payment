@@ -6,6 +6,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const db = require('./dbConfig')
+require('dotenv').config()
 
 var app = express();
 app.use((req, res, next) => {
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/app1', require('./routes/app1/order'));
 app.use('/app2', require('./routes/app2/order'))
 app.get('/buy', (req, res) => {
+  console.log(process.env.EMAIL, process.env.PWD_EML)
   res.render('buy')
 })
 

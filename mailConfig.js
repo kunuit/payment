@@ -1,12 +1,13 @@
 const nodemailer = require('nodemailer');
 
+
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   secure: false,
   requireTLS: true,
   auth: {
-    user: '18520549@gm.uit.edu.vn',
-    pass: 'cuongkunion2512'
+    user: process.env.EMAIL,
+    pass: process.env.PWD_EML
   }
 });
 
